@@ -13,6 +13,7 @@ import org.pircbotx.UtilSSLSocketFactory;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
 
+@SuppressWarnings("rawtypes")
 public class RouteServ extends ListenerAdapter implements Listener {
 
 	public static PircBotX bot = new PircBotX();

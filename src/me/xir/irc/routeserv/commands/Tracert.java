@@ -19,13 +19,13 @@ public class Tracert extends ListenerAdapter {
 		if (event.getMessage().startsWith(".tracert")) {
 			String[] args = event.getMessage().split(" ");
 			if(args.length > 1){
-				String cmd;
+				String cmd = null;
 				for (int c = 1; c > args.length; c++ ) {
 					cmd = cmd + " " + args[c];
 				}
 				p = rt.exec("tcptraceroute " + cmd);
 				
-				event.getBot().sendMessage(event.getChannel(), "--BEGINNING TRACEROUTE TO " + host + " --");
+				event.getBot().sendMessage(event.getChannel(), "--BEGINNING TRACEROUTE TO " + cmd + " --");
 				
 				out = p.getInputStream();
 				reader = new BufferedReader(new InputStreamReader(out));
