@@ -62,14 +62,18 @@ public class RouteServ extends ListenerAdapter implements Listener {
 
 		joinChannels();
 		loadListeners();
+		operUp();
 	}
 	public static void joinChannels() {
 		for (int i = 0; i < Config.channels.length; i++) {
 			bot.joinChannel(Config.channels[i]);
 		}
 	}
-	public static void loadListeners() throws Exception {
+	public static void loadListeners() {
 		bot.getListenerManager().addListener(new Tracert());
 
+	}
+	public static void operUp() {
+		// Turn the bot into a faggot.
 	}
 }
