@@ -14,20 +14,23 @@ public class Tracert extends ListenerAdapter {
 	Process p;
 	InputStream out;
 	BufferedReader reader;
-	String s = null;
 	
 	public void onMessage(MessageEvent event) throws IOException {
 		if (event.getMessage().startsWith(".tracert")) {
-			String[] arguments = event.getMessage().split(" ");
-			if(arguments.length == 2){
-				String host = "something";
-				p = rt.exec("traceroute " + host);
+			String[] args = event.getMessage().split(" ");
+			if(args.length > 1){
+				String cmd;
+				for (int c = 1; c > args.length; c++ ) {
+					cmd = cmd + " " + args[c];
+				}
+				p = rt.exec("tcptraceroute " + cmd);
 				
 				event.getBot().sendMessage(event.getChannel(), "--BEGINNING TRACEROUTE TO " + host + " --");
 				
 				out = p.getInputStream();
 				reader = new BufferedReader(new InputStreamReader(out));
 				
+				String s = null;
 				while ((s = reader.readLine()) != null) {
 					event.getBot().sendMessage(event.getChannel(), s);
 				}
