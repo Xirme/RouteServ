@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import me.xir.irc.routeserv.Config;
+import me.xir.irc.routeserv.commands.*;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.UtilSSLSocketFactory;
@@ -67,7 +68,7 @@ public class RouteServ extends ListenerAdapter implements Listener {
 		}
 	}
 	public static void loadListeners() throws Exception {
-		// bot.getListenerManager().addListener(new Tracert());
+		bot.getListenerManager().addListener(new Tracert());
 
 	}
 }
